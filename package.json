@@ -1,0 +1,45 @@
+{
+  "name": "kanjiappnoreact",
+  "version": "1.0.0",
+  "description": "kanjiapp to help learn kanji",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "xmltest": "node app/kanjiXmlHelper/kanjiXmlHelper.js",
+    "watch": "nodemon server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perez6736/KanjiAppNoReact.git"
+  },
+  "author": "Daniel Perez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perez6736/KanjiAppNoReact/issues"
+  },
+  "homepage": "https://github.com/perez6736/KanjiAppNoReact#readme",
+  "dependencies": {
+    "-": "0.0.1",
+    "bcrpyt": "^2.0.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "fast-xml-parser": "^3.19.0",
+    "g": "^2.0.1",
+    "he": "^1.2.0",
+    "method-override": "^3.0.0",
+    "mysql": "^2.18.1",
+    "passport-local": "^1.0.0",
+    "request": "^2.88.0",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4"
+  }
+}

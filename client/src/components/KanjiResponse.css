@@ -1,0 +1,9 @@
+.JSON-response-container {
+  height: 350px;
+  background-color: #475;
+}
+
+.json-data {
+  height: 100%;
+  overflow: scroll;
+}

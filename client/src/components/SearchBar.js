@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
         <div className="ui fluid input">
           <div className="ui label">
             <span id="baseURL-kanji-api" className="label-text">
-              https://BaseURL.com/api/kanji/
+              https://BaseURL.com/api/
             </span>
           </div>
           <input

@@ -6,7 +6,7 @@ const xmlHelper = require("../kanjiXmlHelper/kanjiXmlHelper.js");
 module.exports = function (app) {
   // takes in a single character and returns info on it
   // api/kanji/search/字
-  app.get("/api/kanji/search/:kanjiCharacter?", function (req, res) {
+  app.get("/api/kanjisearch/:kanjiCharacter?", function (req, res) {
     if (req.params.kanjiCharacter === undefined)
       return res.json({ res: "Empty search parameter." });
 
@@ -24,7 +24,7 @@ module.exports = function (app) {
 
   // takes multiple kanjis as string
   // api/kanji/kanjis?kanji=漢字
-  app.get("/api/kanji/kanjis", function (req, res) {
+  app.get("/api/kanjisearch/kanjis", function (req, res) {
     req.query.kanji = req.query.kanji.split("");
     console.log(req.query.kanji);
     if (!Array.isArray(req.query.kanji))
@@ -44,7 +44,7 @@ module.exports = function (app) {
 
   // send one english word to get a kanji back
   // api/kanji/meaning/word
-  app.get("/api/kanji/meaning/:meaning?", function (req, res) {
+  app.get("/api/wordsearch/meaning/:meaning?", function (req, res) {
     if (req.params.meaning === undefined)
       return res.json({ res: "Empty search parameter." });
 
@@ -62,7 +62,7 @@ module.exports = function (app) {
 
   // enter a grade as a string and returns the jouyou grade
   // api.kanji.grade/3
-  app.get("/api/kanji/grade/:grade?", function (req, res) {
+  app.get("/api/list/grade/:grade?", function (req, res) {
     if (req.params.grade === undefined)
       return res.json({ res: "Empty search parameter." });
     let requestedKanjiGrade = parseInt(req.params.grade);
@@ -85,7 +85,7 @@ module.exports = function (app) {
 
   // enter a jlpt as a string and returns the jlpt grade
   // api.kanji.jlpt/3
-  app.get("/api/kanji/jlpt/:jlptLevel", function (req, res) {
+  app.get("/api/list/jlpt/:jlptLevel", function (req, res) {
     let requestedKanjiJLPT = parseInt(req.params.jlptLevel);
     console.log(requestedKanjiJLPT);
     if (
@@ -106,7 +106,7 @@ module.exports = function (app) {
   });
 
   // returns all jouyou kanji
-  app.get("/api/kanji/jouyou", function (req, res) {
+  app.get("/api/list/jouyou", function (req, res) {
     xmlHelper
       .getKanjiAllJoyoKanji()
       .then((results) => {
@@ -118,7 +118,7 @@ module.exports = function (app) {
   });
 
   // returns all jlpt kanji
-  app.get("/api/kanji/jlpt", function (req, res) {
+  app.get("/api/list/jlpt", function (req, res) {
     xmlHelper
       .getKanjiAllJlptKanji()
       .then((results) => {

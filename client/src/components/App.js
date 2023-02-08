@@ -11,17 +11,17 @@ class App extends React.Component {
 
   //default search term.
   componentDidMount() {
-    this.onTermSubmit("search/漢");
+    this.onTermSubmit("kanjisearch/漢");
   }
 
   /* searchable terms.
-  search/漢 - Kanji (only one)
-  kanjis?kanji=漢字 - Kanjis (multple is okay)
-  meaning/word (string)
-  grade/1 (int)
-  jlpt/3 (int)
-  jouyou (returns all jouyou kanji)
-  jlpt (returns all jlpt kanji)
+  /api/kanjisearch/漢 - Kanji (only one)
+  /api/kanjisearch/kanjis?kanji=漢字 - Kanjis (multple is okay)
+  /api/wordsearch/meaning/word (string)
+  /api/list/grade/1 (int)
+  /api/list/jlpt/3 (int)
+  /api/list/jouyou (returns all jouyou kanji)
+  /api/list/jlpt (returns all jlpt kanji)
  */
 
   onTermSubmit = async (term) => {
@@ -52,7 +52,7 @@ class App extends React.Component {
         <div className="ui main container">
           <SearchBar onTermSubmit={this.onTermSubmit} />
           <div>
-            Try other calls like /api/kanji/kanjis?kanji=漢字 or
+            Try other calls like /api/kanjisearch/kanjis?kanji=漢字 or
             /api/kanji/meaning/chopsticks
           </div>
           <KanjiResponse kanjiInfo={this.state.kanjiInfo} />

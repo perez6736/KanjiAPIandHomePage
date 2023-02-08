@@ -1,0 +1,5 @@
+.gridcontainer {
+  display: grid;
+  border: 5px solid;
+  padding: 1rem;
+}

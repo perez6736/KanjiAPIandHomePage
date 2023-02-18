@@ -4,33 +4,39 @@ const xmlHelper = require("../kanjiXmlHelper/kanjiXmlHelper.js");
 // main Kanji api
 // =====================================================
 module.exports = function (app) {
+  // This first end point can be used with api/kanjisearch/kanjis/会社
   // takes in a single character and returns info on it
   // api/kanji/search/字
-  app.get("/api/kanjisearch/:kanjiCharacter?", function (req, res) {
-    if (req.params.kanjiCharacter === undefined)
-      return res.json({ res: "Empty search parameter." });
+  // app.get("/api/kanjisearch/:kanjiCharacter?", function (req, res) {
+  //   console.log("/api/kanjisearch/:kanjiCharacter?");
+  //   if (req.params.kanjiCharacter === undefined)
+  //     return res.json({ res: "Empty search parameter." });
 
-    let requestedKanjis = req.params.kanjiCharacter;
+  //   let requestedKanjis = req.params.kanjiCharacter;
 
-    xmlHelper
-      .getKanjiInfo(requestedKanjis)
-      .then((results) => {
-        res.json(results);
-      })
-      .catch((err) => {
-        res.status(204).send(err);
-      });
-  });
+  //   xmlHelper
+  //     .getKanjiInfo(requestedKanjis)
+  //     .then((results) => {
+  //       res.json(results);
+  //     })
+  //     .catch((err) => {
+  //       res.status(204).send(err);
+  //     });
+  // });
 
   // takes multiple kanjis as string
-  // api/kanji/kanjis?kanji=漢字
-  app.get("/api/kanjisearch/kanjis", function (req, res) {
-    req.query.kanji = req.query.kanji.split("");
-    console.log(req.query.kanji);
-    if (!Array.isArray(req.query.kanji))
+  // api/kanjisearch/kanjis/会社
+  app.get("/api/kanjisearch/:kanjis?", function (req, res) {
+    console.log("/api/kanjisearch/:kanji?");
+    console.log(req);
+    if (req.params.kanjis === undefined)
+      return res.json({ res: "Empty search parameter." });
+    req.params.kanjis = req.params.kanjis.split("");
+    console.log(req.params.kanjis);
+    if (!Array.isArray(req.params.kanjis))
       return res.json({ res: "Parameter not formatted correctly or Empty." });
 
-    let requestedKanjis = req.query.kanji;
+    let requestedKanjis = req.params.kanjis;
 
     xmlHelper
       .getKanjisInfo(requestedKanjis)
@@ -44,10 +50,9 @@ module.exports = function (app) {
 
   // send one english word to get a kanji back
   // api/kanji/meaning/word
-  app.get("/api/wordsearch/meaning/:meaning?", function (req, res) {
+  app.get("/api/meaning/:meaning?", function (req, res) {
     if (req.params.meaning === undefined)
       return res.json({ res: "Empty search parameter." });
-
     let requestedKanjiMeaning = req.params.meaning;
 
     xmlHelper
@@ -62,7 +67,7 @@ module.exports = function (app) {
 
   // enter a grade as a string and returns the jouyou grade
   // api.kanji.grade/3
-  app.get("/api/list/grade/:grade?", function (req, res) {
+  app.get("/api/list/jouyou/:grade", function (req, res) {
     if (req.params.grade === undefined)
       return res.json({ res: "Empty search parameter." });
     let requestedKanjiGrade = parseInt(req.params.grade);

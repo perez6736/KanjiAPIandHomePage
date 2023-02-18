@@ -11,15 +11,14 @@ class App extends React.Component {
 
   //default search term.
   componentDidMount() {
-    this.onTermSubmit("kanjisearch/漢");
+    this.onTermSubmit("/kanjisearch/漢");
   }
 
   /* searchable terms.
-  /api/kanjisearch/漢 - Kanji (only one)
-  /api/kanjisearch/kanjis?kanji=漢字 - Kanjis (multple is okay)
-  /api/wordsearch/meaning/word (string)
-  /api/list/grade/1 (int)
-  /api/list/jlpt/3 (int)
+  /api/kanjisearch/漢字 - Kanjis (multple is okay)
+  /api/meaning/{meaning}/ (string)
+  /api/list/jouyou/:gradelevel (int)
+  /api/list/jlpt/:jlptLevel (int)
   /api/list/jouyou (returns all jouyou kanji)
   /api/list/jlpt (returns all jlpt kanji)
  */

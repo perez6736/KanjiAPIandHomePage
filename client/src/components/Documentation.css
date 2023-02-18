@@ -3,3 +3,7 @@
   border: 5px solid;
   padding: 1rem;
 }
+
+.colheader > p {
+  font-weight: bold;
+}

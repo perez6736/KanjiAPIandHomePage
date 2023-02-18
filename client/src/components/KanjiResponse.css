@@ -1,6 +1,7 @@
-.JSON-response-container {
+#JSON-response-container {
   height: 350px;
-  background-color: #475;
+  background-color: rgb(233, 234, 233);
+  margin-bottom: 3rem;
 }
 
 .json-data {

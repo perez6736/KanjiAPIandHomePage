@@ -22,7 +22,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // need this to use the js file and css file for the html pages.
-app.use(express.static(__dirname + "/app/client/public"));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(__dirname + "/client/build"));
+} else {
+  app.use(express.static(__dirname + "/client/public"));
+}
 
 //CORS - react runs on a different port
 app.use(cors());

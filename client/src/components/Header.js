@@ -4,9 +4,9 @@ class Header extends React.Component {
   render() {
     return (
       <div className="ui container">
-        <a href="#" className="header item">
-          <img src={require("../images/ji.png")} />
-        </a>
+        <div className="header item">
+          <img alt="kanjiIcon" src={require("../images/ji.png")} />
+        </div>
       </div>
     );
   }

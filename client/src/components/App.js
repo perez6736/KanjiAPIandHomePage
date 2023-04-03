@@ -51,8 +51,7 @@ class App extends React.Component {
         <div className="ui main container">
           <SearchBar onTermSubmit={this.onTermSubmit} />
           <div>
-            Try other calls like /api/kanjisearch/kanjis?kanji=漢字 or
-            /api/kanji/meaning/chopsticks
+            Try other calls like kanjisearch/漢字 or kanji/meaning/chopsticks
           </div>
           <KanjiResponse kanjiInfo={this.state.kanjiInfo} />
           <div>

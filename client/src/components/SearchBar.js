@@ -26,6 +26,7 @@ class SearchBar extends React.Component {
           <input
             id="kanji-api-input"
             className="input-placeholder-text"
+            placeholder="kanjisearch/漢"
             type="text"
             onChange={this.onInputChange}
           />

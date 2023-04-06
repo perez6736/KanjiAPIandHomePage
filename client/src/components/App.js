@@ -28,7 +28,7 @@ class App extends React.Component {
       kanjiInfo: "Loading... ",
     });
 
-    await kanji
+    const response = await kanji
       .get(term, {})
       .then((res) => {
         this.setState({

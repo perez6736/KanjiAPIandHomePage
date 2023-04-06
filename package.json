@@ -5,10 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
     "xmltest": "node app/kanjiXmlHelper/kanjiXmlHelper.js",
-    "watch": "nodemon server.js",
     "dev": "nodemon server.js",
+    "start": "node server.js",
     "build": "cd client && npm install && npm run build && cd .. && npm install && npm start"
   },
   "repository": {
@@ -35,8 +34,10 @@
     "he": "^1.2.0",
     "method-override": "^3.0.0",
     "mysql": "^2.18.1",
+    "netlify-lambda": "^2.0.16",
     "passport-local": "^1.0.0",
     "request": "^2.88.0",
+    "serverless-http": "^3.2.0",
     "xml2js": "^0.4.23"
   },
   "devDependencies": {

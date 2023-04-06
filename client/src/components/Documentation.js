@@ -26,7 +26,7 @@ class Documentation extends React.Component {
                 <p>/api/kanjisearch/</p>
               </div>
               <div className="column endpoint">
-                <p>Search for kanji by kanji character</p>
+                <p>Search for kanjis by kanji characters</p>
               </div>
             </div>
             <div className="ui divider"></div>
@@ -208,7 +208,7 @@ class Documentation extends React.Component {
           </div>
         </div>
 
-        <h4 className="ui horizontal divider header"></h4>
+        <h4 className="ui horizontal divider header">Divider</h4>
       </div>
     );
   }

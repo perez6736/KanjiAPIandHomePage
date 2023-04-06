@@ -208,7 +208,7 @@ class Documentation extends React.Component {
           </div>
         </div>
 
-        <h4 className="ui horizontal divider header"></h4>
+        <div className="ui horizontal divider header"></div>
       </div>
     );
   }

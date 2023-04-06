@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 var session = require("express-session");
 var cors = require("cors");
 var serverless = require("serverless-http");
+var router = express.Router();
 
 var app = express();
 
@@ -34,10 +35,16 @@ if (process.env.NODE_ENV === "production") {
 app.use(cors());
 
 //Router
-require("./app/routing/kanjiAPI")(app);
+require("../app/routing/kanjiAPI")(app);
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 
-// Listner
+if (process.env.NODE_ENV === "production") {
+  app.use("/.netlify/functions/server", app);
+}
 
+// Listener
 app.listen(PORT, function () {
   console.log("App is listening on PORT: " + PORT);
 });

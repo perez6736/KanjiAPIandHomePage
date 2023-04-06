@@ -8,7 +8,7 @@
     "xmltest": "node app/kanjiXmlHelper/kanjiXmlHelper.js",
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "build": "cd client && npm install && npm run build && cd .. && npm install && npm start"
+    "build": "cd client && npm install && npm run build && cd .. && npm install && netlify deploy --prod"
   },
   "repository": {
     "type": "git",

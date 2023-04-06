@@ -8,7 +8,8 @@
     "start": "nodemon server.js",
     "xmltest": "node app/kanjiXmlHelper/kanjiXmlHelper.js",
     "watch": "nodemon server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "cd client && npm install && npm run build && cd .. && npm install && npm start"
   },
   "repository": {
     "type": "git",

@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var session = require("express-session");
 var cors = require("cors");
+var serverless = require("serverless-http");
 
 var app = express();
 
@@ -35,3 +36,5 @@ require("./app/routing/kanjiAPI")(app);
 app.listen(PORT, function () {
   console.log("App is listening on PORT: " + PORT);
 });
+
+module.exports.handler = serverless(app);

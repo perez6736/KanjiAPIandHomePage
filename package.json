@@ -8,8 +8,6 @@
     "xmltest": "node app/kanjiXmlHelper/kanjiXmlHelper.js",
     "dev": "nodemon server.js",
     "build": "npm run build:client && npm run build:server",
-    "build:client": "cd client && npm install && npm run build",
-    "build:server": "npm install && npm run build",
     "start": "node server.js"
   },
   "repository": {

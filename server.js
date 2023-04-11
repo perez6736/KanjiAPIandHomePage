@@ -2,7 +2,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var session = require("express-session");
 var cors = require("cors");
-var serverless = require("serverless-http");
 var router = express.Router();
 
 var app = express();
@@ -34,19 +33,19 @@ if (process.env.NODE_ENV === "production") {
 //CORS - react runs on a different port
 app.use(cors());
 
-//Router
+// //Router
 require("./app/routing/kanjiAPI")(app);
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
-if (process.env.NODE_ENV === "production") {
-  app.use("/.netlify/functions/server", app);
-}
-
-// Listener
+// // Listener
 app.listen(PORT, function () {
   console.log("App is listening on PORT: " + PORT);
 });
 
-module.exports.handler = serverless(app);
+app.get("/", (req, res) => {
+  res.send(200, { message: "ok" });
+});
+
+//module.exports.handler = serverless(app);

@@ -101,3 +101,5 @@ configkeys/
 # End of https://www.gitignore.io/api/node
 
 kanjiJson.json
+# Local Netlify folder
+.netlify

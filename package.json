@@ -41,7 +41,7 @@
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "nodemon": "^2.0.4"
   }
 }

@@ -25,8 +25,10 @@ app.use(bodyParser.json());
 // need this to use the js file and css file for the html pages.
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(__dirname + "/client/build"));
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
 } else {
-  app.use(express.static(__dirname + "/client/build"));
   app.use(express.static(__dirname + "/client/public"));
 }
 
@@ -35,17 +37,8 @@ app.use(cors());
 
 // //Router
 require("./app/routing/kanjiAPI")(app);
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
 
 // // Listener
 app.listen(PORT, function () {
   console.log("App is listening on PORT: " + PORT);
 });
-
-app.get("/", (req, res) => {
-  res.send(200, { message: "ok" });
-});
-
-//module.exports.handler = serverless(app);

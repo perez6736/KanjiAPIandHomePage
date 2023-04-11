@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "xmltest": "node app/kanjiXmlHelper/kanjiXmlHelper.js",
     "dev": "nodemon server.js",
-    "build": "cd client && npm install && npm run build",
+    "build": "cd client && npm install && npm run build && cd .. && npm install",
     "start": "node server.js"
   },
   "repository": {

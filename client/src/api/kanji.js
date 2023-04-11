@@ -9,5 +9,5 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 }
 
 export default axios.create({
-  baseURL: "http://localhost:3001/api/",
+  baseURL: url,
 });

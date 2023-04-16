@@ -1,3 +1,5 @@
+https://japanese-kanji-api.onrender.com/
+
 An API to serve information of Japanese kanji characters. 
 
 Tech used 

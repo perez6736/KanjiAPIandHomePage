@@ -1,4 +1,5 @@
 https://japanese-kanji-api.onrender.com/
+because I am using the free tier on [render](https://render.com/) The first load of the site will be slow.
 
 An API to serve information of Japanese kanji characters. 
 

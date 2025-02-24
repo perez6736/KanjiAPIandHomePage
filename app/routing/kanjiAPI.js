@@ -1,34 +1,27 @@
 const xmlHelper = require("../kanjiXmlHelper/kanjiXmlHelper.js");
+const sqlite3 = require("sqlite3").verbose();
+const path = require("path");
+
+// Connect to SQLite database
+const db = new sqlite3.Database(
+  path.join(__dirname, "../../data/kanji.db"),
+  (err) => {
+    if (err) console.error("Database connection error:", err);
+    else console.log("Connected to SQLite database.");
+  }
+);
 
 // =====================================================
 // main Kanji api
 // =====================================================
 module.exports = function (app) {
-  // This first end point can be used with api/kanjisearch/kanjis/会社
-  // takes in a single character and returns info on it
-  // api/kanji/search/字
-  // app.get("/api/kanjisearch/:kanjiCharacter?", function (req, res) {
-  //   console.log("/api/kanjisearch/:kanjiCharacter?");
-  //   if (req.params.kanjiCharacter === undefined)
-  //     return res.json({ res: "Empty search parameter." });
-
-  //   let requestedKanjis = req.params.kanjiCharacter;
-
-  //   xmlHelper
-  //     .getKanjiInfo(requestedKanjis)
-  //     .then((results) => {
-  //       res.json(results);
-  //     })
-  //     .catch((err) => {
-  //       res.status(204).send(err);
-  //     });
-  // });
+  // lets parse the xml file and save it in memory to avoid having to reread it over and over again.
 
   // takes multiple kanjis as string
   // api/kanjisearch/kanjis/会社
   app.get("/api/kanjisearch/:kanjis?", function (req, res) {
     console.log("/api/kanjisearch/:kanji?");
-    console.log(req);
+    //console.log(req);
     if (req.params.kanjis === undefined)
       return res.json({ res: "Empty search parameter." });
     req.params.kanjis = req.params.kanjis.split("");

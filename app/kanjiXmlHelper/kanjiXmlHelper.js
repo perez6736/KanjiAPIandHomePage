@@ -254,25 +254,6 @@ const kanjiXml = {
     });
   },
 
-  // create function to get kanjis with certain jlpt
-  // uses the pre-2010 level of the Japanese Language Proficiency Test (JLPT) in which the kanji occurs (1-4).
-  getKanjiAllJlptKanji() {
-    return new Promise((resolve) => {
-      XMLtoJSON.then((results) => {
-        let kanjis = [];
-        for (let i = 0; i < results.character.length; i++) {
-          if (results.character[i].misc.jlpt != undefined) {
-            const formattedKanjiJSON = formatCharacterObject(
-              results.character[i]
-            );
-            kanjis.push(formattedKanjiJSON);
-          }
-        }
-        resolve({ kanjis });
-      });
-    });
-  },
-
   // create function to get kanji based on english word - heisig word or meaning.
   getKanjiFromMeaning(meaning) {
     return new Promise((resolve) => {

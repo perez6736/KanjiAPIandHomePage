@@ -1,15 +1,5 @@
 const xmlHelper = require("../kanjiXmlHelper/kanjiXmlHelper.js");
-const sqlite3 = require("sqlite3").verbose();
-const path = require("path");
-
-// Connect to SQLite database
-const db = new sqlite3.Database(
-  path.join(__dirname, "../../data/kanji.db"),
-  (err) => {
-    if (err) console.error("Database connection error:", err);
-    else console.log("Connected to SQLite database.");
-  }
-);
+const kanjiController = require("../kanjidbHelper/kanjiController.js");
 
 // =====================================================
 // main Kanji api
@@ -105,8 +95,8 @@ module.exports = function (app) {
 
   // returns all jouyou kanji
   app.get("/api/list/jouyou", function (req, res) {
-    xmlHelper
-      .getKanjiAllJoyoKanji()
+    kanjiController
+      .getAllJoyoKanjiData()
       .then((results) => {
         res.json(results);
       })

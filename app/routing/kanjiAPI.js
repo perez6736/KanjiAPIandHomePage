@@ -15,14 +15,13 @@ module.exports = function (app) {
     if (req.params.kanjis === undefined)
       return res.json({ res: "Empty search parameter." });
     req.params.kanjis = req.params.kanjis.split("");
-    console.log(req.params.kanjis);
     if (!Array.isArray(req.params.kanjis))
       return res.json({ res: "Parameter not formatted correctly or Empty." });
 
     let requestedKanjis = req.params.kanjis;
 
-    xmlHelper
-      .getKanjisInfo(requestedKanjis)
+    kanjiController
+      .getKanjisByKanjis(requestedKanjis)
       .then((results) => {
         res.json(results);
       })
@@ -61,8 +60,8 @@ module.exports = function (app) {
     )
       return res.json({ res: "Bad Parameters" });
 
-    xmlHelper
-      .getKanjiByGrade(requestedKanjiGrade)
+    kanjiController
+      .getJoyoKanjiDataByGrade(requestedKanjiGrade)
       .then((results) => {
         res.json(results);
       })

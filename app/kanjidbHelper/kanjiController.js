@@ -81,10 +81,26 @@ const kanjiController = {
         });
     });
   },
+
   getJlptKanjiDataByNLevel(NLevel) {
     return new Promise((resolve, reject) => {
       db.getJlptKanjiByNlevel(NLevel)
         .then((rows) => {
+          const kanjiData = formatRowsToJSON(rows);
+          resolve({ kanjis: kanjiData });
+        })
+        .catch((error) => {
+          console.error(error);
+          reject(new Error("Failed to fetch Joyo kanji data"));
+        });
+    });
+  },
+
+  getKanjisByKanjis(kanjis) {
+    return new Promise((resolve, reject) => {
+      db.getKanjisByKanjis(kanjis)
+        .then((rows) => {
+          console.log(rows);
           const kanjiData = formatRowsToJSON(rows);
           resolve({ kanjis: kanjiData });
         })

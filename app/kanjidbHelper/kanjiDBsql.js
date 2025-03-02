@@ -34,6 +34,120 @@ kanjiDbModel = {
     });
   },
 
+  getJouyouKanjiByGrade: (grade) => {
+    return new Promise((resolve, reject) => {
+      const query = `
+        SELECT 
+          k.*,
+          GROUP_CONCAT(DISTINCT m.language || ':' || m.meaning) as meanings,
+          GROUP_CONCAT(DISTINCT r.type || ':' || r.reading) as readings,
+          GROUP_CONCAT(DISTINCT n.nanori) as nanoris
+        FROM kanji k
+        LEFT JOIN meanings m ON k.kanji = m.kanji
+        LEFT JOIN readings r ON k.kanji = r.kanji
+        LEFT JOIN nanori n ON k.kanji = n.kanji
+        WHERE k.grade = ?
+        GROUP BY k.kanji
+      `;
+
+      db.all(query, [grade], (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+  },
+
+  getAllJlptKanji: () => {
+    return new Promise((resolve, reject) => {
+      const query = `
+        SELECT 
+          k.*,
+          GROUP_CONCAT(DISTINCT m.language || ':' || m.meaning) as meanings,
+          GROUP_CONCAT(DISTINCT r.type || ':' || r.reading) as readings,
+          GROUP_CONCAT(DISTINCT n.nanori) as nanoris
+        FROM kanji k
+        LEFT JOIN meanings m ON k.kanji = m.kanji
+        LEFT JOIN readings r ON k.kanji = r.kanji
+        LEFT JOIN nanori n ON k.kanji = n.kanji
+        WHERE k.jlpt IS NOT NULL
+        GROUP BY k.kanji
+      `;
+
+      db.all(query, [], (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+  },
+
+  getJlptKanjiByNlevel: (NLevel) => {
+    return new Promise((resolve, reject) => {
+      const query = `
+        SELECT 
+          k.*,
+          GROUP_CONCAT(DISTINCT m.language || ':' || m.meaning) as meanings,
+          GROUP_CONCAT(DISTINCT r.type || ':' || r.reading) as readings,
+          GROUP_CONCAT(DISTINCT n.nanori) as nanoris
+        FROM kanji k
+        LEFT JOIN meanings m ON k.kanji = m.kanji
+        LEFT JOIN readings r ON k.kanji = r.kanji
+        LEFT JOIN nanori n ON k.kanji = n.kanji
+        WHERE k.jlpt = ?
+        GROUP BY k.kanji
+      `;
+
+      db.all(query, [NLevel], (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+  },
+
+  getAllJlptKanji: () => {
+    return new Promise((resolve, reject) => {
+      const query = `
+        SELECT 
+          k.*,
+          GROUP_CONCAT(DISTINCT m.language || ':' || m.meaning) as meanings,
+          GROUP_CONCAT(DISTINCT r.type || ':' || r.reading) as readings,
+          GROUP_CONCAT(DISTINCT n.nanori) as nanoris
+        FROM kanji k
+        LEFT JOIN meanings m ON k.kanji = m.kanji
+        LEFT JOIN readings r ON k.kanji = r.kanji
+        LEFT JOIN nanori n ON k.kanji = n.kanji
+        WHERE k.jlpt IS NOT NULL
+        GROUP BY k.kanji
+      `;
+
+      db.all(query, [], (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+  },
+
+  getJlptKanjiByNlevel: (NLevel) => {
+    return new Promise((resolve, reject) => {
+      const query = `
+        SELECT 
+          k.*,
+          GROUP_CONCAT(DISTINCT m.language || ':' || m.meaning) as meanings,
+          GROUP_CONCAT(DISTINCT r.type || ':' || r.reading) as readings,
+          GROUP_CONCAT(DISTINCT n.nanori) as nanoris
+        FROM kanji k
+        LEFT JOIN meanings m ON k.kanji = m.kanji
+        LEFT JOIN readings r ON k.kanji = r.kanji
+        LEFT JOIN nanori n ON k.kanji = n.kanji
+        WHERE k.jlpt = ?
+        GROUP BY k.kanji
+      `;
+
+      db.all(query, [NLevel], (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+  },
   getKanjiMeanings: (kanji) => {
     return new Promise((resolve, reject) => {
       db.all(

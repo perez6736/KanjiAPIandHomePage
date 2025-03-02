@@ -75,7 +75,6 @@ module.exports = function (app) {
   // api.kanji.jlpt/3
   app.get("/api/list/jlpt/:jlptLevel", function (req, res) {
     let requestedKanjiJLPT = parseInt(req.params.jlptLevel);
-    console.log(requestedKanjiJLPT);
     if (
       requestedKanjiJLPT < 1 ||
       requestedKanjiJLPT > 4 ||
@@ -83,8 +82,8 @@ module.exports = function (app) {
     )
       return res.json({ res: "Bad Parameters" });
 
-    xmlHelper
-      .getKanjiByJLPTn(requestedKanjiJLPT)
+    kanjiController
+      .getJlptKanjiDataByNLevel(requestedKanjiJLPT)
       .then((results) => {
         res.json(results);
       })
@@ -107,8 +106,8 @@ module.exports = function (app) {
 
   // returns all jlpt kanji
   app.get("/api/list/jlpt", function (req, res) {
-    xmlHelper
-      .getKanjiAllJlptKanji()
+    kanjiController
+      .getAllJlptKanjiData()
       .then((results) => {
         res.json(results);
       })

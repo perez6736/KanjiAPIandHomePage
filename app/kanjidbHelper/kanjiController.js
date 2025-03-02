@@ -100,7 +100,6 @@ const kanjiController = {
     return new Promise((resolve, reject) => {
       db.getKanjisByKanjis(kanjis)
         .then((rows) => {
-          console.log(rows);
           const kanjiData = formatRowsToJSON(rows);
           resolve({ kanjis: kanjiData });
         })

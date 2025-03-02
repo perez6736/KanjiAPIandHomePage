@@ -121,8 +121,6 @@ kanjiDbModel = {
         GROUP BY k.kanji
       `;
 
-      console.log(query + " query modal");
-
       db.all(query, kanjiArray, (err, rows) => {
         if (err) reject(err);
         else resolve(rows);
